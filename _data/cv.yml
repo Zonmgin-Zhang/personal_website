@@ -2,96 +2,82 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
-    - name: Languages
-      value: English, German
+      value: Zongmin Zhang
+    - name: Email
+      value: zzhang498@connect.hkust-gz.edu.cn
+    - name: Mobile
+      value: +86-17740192857
+    - name: Research Interests
+      value: Trustworthy AI (AI security and safety)
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: Ph.D. in Data Science and Analytics
+      institution: Hong Kong University of Science and Technology (Guangzhou), Guangzhou, China
+      year: Aug. 2025 – Present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+        - "Supervisor: Prof. Xinlei He"
+    - title: M.Sc. in Computer Science
+      institution: City University of Hong Kong, Hong Kong, China
+      year: Aug. 2022 – Oct. 2023
       description:
-        - Description 1.
-        - Description 2.
+        - "GPA: 3.19/4.3"
+    - title: B.Sc. in Computer Science (Database Systems)
+      institution: The University of New South Wales, Sydney, Australia
+      year: Aug. 2018 – Sep. 2021
+      description:
+        - Credit Award
 
-- title: Experience
+- title: Research Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Ph.D. Student, Data Science and Analytics
+      institution: Hong Kong University of Science and Technology (Guangzhou), Guangzhou, China
+      year: Aug. 2025 – Present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
-      description:
-        - Description 1.
-        - Description 2.
+        - Adversarial attacks on image watermarking (noise-based attacks while preserving visual quality)
+        - Backdoor attacks on Segment Anything 2 (SAM2) for video segmentation
+        - Multimodal LLM jailbreaking (prompt optimization; safety alignment gaps)
+        - Measurement & detection of AI-generated text on social media (data pipelines, labeling, evaluation)
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
+- title: Work Experience
   type: time_table
   contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
+    - title: "Research Assistant (Advisor: Prof. Antoni B. Chan)"
+      institution: City University of Hong Kong, Hong Kong, China
+      year: Jul. 2024 – Jun. 2025
+      description:
+        - GPT-based plagiarism detection using similarity scores (document/paragraph level)
+        - Built instructor-facing tools & dashboards; experiments across prompts and thresholds
+    - title: "Research Assistant (Advisor: Dr. Jinlin Wu)"
+      institution: Centre for Artificial Intelligence and Robotics (CAIR), HKISI, CAS, Hong Kong, China
+      year: Dec. 2023 – Jun. 2024
+      description:
+        - Medical image segmentation pipeline (nnU-Net) for endoscopic lesion segmentation
+        - React + Flask clinical-facing web app integrating a medical LLM; feature iteration with user feedback
+    - title: "Research Assistant (Advisor: Prof. Antoni B. Chan)"
+      institution: City University of Hong Kong, Hong Kong, China
+      year: Sep. 2022 – Jun. 2023
+      description:
+        - Online exam plagiarism checking system (Flask backend + React frontend)
+    - title: System Development Intern
+      institution: Beijing Sankuai Online Technology Co., Ltd. (Meituan), Chengdu, China
+      year: Feb. 2021 – Aug. 2022
+      description:
+        - Java Spring Boot financial reporting system development and maintenance
+        - Designed a data monitoring module and reported error cases in reporting functions
 
-- title: Honors and Awards
-  type: time_table
-  contents:
-    - year: 1921
-      items:
-        - Nobel Prize in Physics
-        - Matteucci Medal
-    - year: 2029
-      items:
-        - Max Planck Medal
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items:
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
-      items:
-        - Description 1.
-        - Description 2.
-
-- title: Other Interests
+- title: Publications
   type: list
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - "<strong>Backdoor Attacks on Prompt-Driven Video Segmentation Foundation Models</strong>, arXiv preprint, 2025.12. (Zongmin Zhang*, Zhen Sun*, ...)"
+    - "<strong>To Survive, I Must Defec: Jailbreaking LLMs via the Game-Theory Scenarios</strong>, arXiv preprint, 2025.11. (Zhen Sun*, Zongmin Zhang*, ...)"
+    - "<strong>6DAttack: Backdoor Attacks in the 6DoF Pose Estimation</strong>, AAAI 2026 (Oral)."
+    - "<strong>CHASM: Unveiling Covert Advertisements on Chinese Social Media</strong>, NeurIPS 2025."
+    - "<strong>FC-Attack: Jailbreaking Multimodal Large Language Models via Auto-Generated Flowcharts</strong>, EMNLP Findings 2025."
+    - "<strong>Are We in the AI-Generated Text World Already? Quantifying and Monitoring AIGT on Social Media</strong>, ACL Main 2025."
+    - "<strong>SynDec: A Synthesize-then-Decode Approach for Arbitrary Textual Style Transfer via Large Language Models</strong>, arXiv preprint, 2025."
+    - "<strong>AdSpectorX: A Multimodal Expert Spector for Covert Advertising Detection on Chinese Social Media</strong>, SocialMeta 2024 (Best Paper Award)."
+    - "<strong>ASI-Seg: Audio-Driven Surgical Instrument Segmentation with Surgeon Intention Understanding</strong>, IROS 2024 (Oral)."
+    - "<strong>SurgPLAN: Surgical Phase Localization Network</strong>, ISBI 2024."
