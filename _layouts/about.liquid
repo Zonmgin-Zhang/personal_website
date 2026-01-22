@@ -35,6 +35,11 @@ layout: default
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
         {% endif %}
+        {% if page.social_in_profile %}
+          <div class="about-social-icons about-social-icons--profile">
+            {% social_links %}
+          </div>
+        {% endif %}
       </div>
     {% endif %}
 
