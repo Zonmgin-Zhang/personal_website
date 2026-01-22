@@ -4,6 +4,15 @@
   {% if site.enable_publication_thumbnails %}
     <div class="col col-sm-2 abbr">
       {%- if entry.abbr -%}
+        {%- assign badge_label = entry.abbr -%}
+        {%- if entry.year -%}
+          {%- assign year_str = entry.year | append: '' -%}
+          {%- assign year_suffix = year_str | slice: -2, 2 -%}
+          {%- assign badge_label = badge_label | append: '’' | append: year_suffix -%}
+        {%- endif -%}
+        {%- if entry.note -%}
+          {%- assign badge_label = badge_label | append: ' ' | append: entry.note -%}
+        {%- endif -%}
         {%- if site.data.venues[entry.abbr] -%}
           {% assign venue_style = null %}
           {% if site.data.venues[entry.abbr].color != blank %}
@@ -16,13 +25,13 @@
             {% endif -%}
           >
             {% if site.data.venues[entry.abbr].url %}
-              <a href="{{ site.data.venues[entry.abbr].url }}">{{ entry.abbr }}</a>
+              <a href="{{ site.data.venues[entry.abbr].url }}">{{ badge_label }}</a>
             {% else %}
-              <div>{{- entry.abbr -}}</div>
+              <div>{{- badge_label -}}</div>
             {% endif %}
           </abbr>
         {% else %}
-          <abbr class="badge rounded w-100">{{ entry.abbr }}</abbr>
+          <abbr class="badge rounded w-100">{{ badge_label }}</abbr>
         {% endif %}
       {% endif %}
       {% if entry.preview %}

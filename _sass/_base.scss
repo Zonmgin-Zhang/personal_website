@@ -146,15 +146,6 @@ blockquote {
   height: 100vh;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.8;
-}
-
-html[data-theme="light"] #cursor-trail-canvas {
-  opacity: 0.9;
-}
-
-html[data-theme="dark"] #cursor-trail-canvas {
-  opacity: 0.7;
 }
 
 @media (prefers-reduced-motion: reduce) {

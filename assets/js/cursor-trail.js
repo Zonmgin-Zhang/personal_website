@@ -1,4 +1,4 @@
-/* Cursor trail effect (mouse only)
+/* Cursor trail effect (mouse only): large colorful mosaic blocks.
  * - Disabled on touch devices and when prefers-reduced-motion is set
  * - Non-interactive overlay (pointer-events: none)
  */
@@ -6,8 +6,7 @@
 (() => {
   const prefersReducedMotion =
     window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const noHover =
-    window.matchMedia && window.matchMedia("(hover: none)").matches;
+  const noHover = window.matchMedia && window.matchMedia("(hover: none)").matches;
   const hasTouch =
     (navigator.maxTouchPoints && navigator.maxTouchPoints > 0) ||
     (navigator.msMaxTouchPoints && navigator.msMaxTouchPoints > 0);
@@ -26,32 +25,18 @@
     dpr: 1,
     w: 0,
     h: 0,
-    points: [],
-    maxPoints: 140,
     last: null,
-    rgb: { r: 120, g: 180, b: 255 }, // fallback
+    // grid / effect tuning
+    cell: 22, // px (CSS pixels)
+    radius: 220, // px (CSS pixels)
+    stampsPerMove: 18,
+    ttl: 850, // ms
+    // tiles stored by cell key
+    tiles: new Map(),
   };
 
   function clamp(n, min, max) {
     return Math.max(min, Math.min(max, n));
-  }
-
-  function hexToRgb(hex) {
-    const h = (hex || "").trim();
-    if (!h.startsWith("#")) return null;
-    const s = h.slice(1);
-    if (s.length !== 6) return null;
-    const n = Number.parseInt(s, 16);
-    if (Number.isNaN(n)) return null;
-    return { r: (n >> 16) & 255, g: (n >> 8) & 255, b: n & 255 };
-  }
-
-  function updateThemeColor() {
-    const root = document.documentElement;
-    const styles = window.getComputedStyle(root);
-    const color = styles.getPropertyValue("--global-theme-color");
-    const rgb = hexToRgb(color);
-    if (rgb) state.rgb = rgb;
   }
 
   function resize() {
@@ -62,33 +47,63 @@
     canvas.height = state.h;
   }
 
-  function pushPoint(x, y) {
-    const now = performance.now();
-    state.points.push({
-      x: x * state.dpr,
-      y: y * state.dpr,
-      r: (1.6 + Math.random() * 1.8) * state.dpr,
-      a: 1,
-      born: now,
-      ttl: 550 + Math.random() * 250, // ms
-      vx: (Math.random() - 0.5) * 0.15 * state.dpr,
-      vy: (Math.random() - 0.5) * 0.15 * state.dpr,
-    });
-
-    if (state.points.length > state.maxPoints) {
-      state.points.splice(0, state.points.length - state.maxPoints);
-    }
+  function snapToCell(v) {
+    return Math.floor(v / state.cell) * state.cell;
   }
 
-  function spawnAlongLine(x0, y0, x1, y1) {
+  function rand(min, max) {
+    return min + Math.random() * (max - min);
+  }
+
+  function randomHue(baseHue) {
+    // keep it colorful but stable-ish along a trail
+    const jitter = rand(-80, 80);
+    return (baseHue + jitter + 360) % 360;
+  }
+
+  function stampAt(x, y, now) {
+    // x/y are CSS pixels
+    const cx = snapToCell(x);
+    const cy = snapToCell(y);
+    const key = `${cx},${cy}`;
+
+    const baseHue = (now * 0.04) % 360;
+    const hue = randomHue(baseHue);
+    const sat = 92;
+    const light = rand(55, 70);
+
+    state.tiles.set(key, {
+      cx,
+      cy,
+      born: now,
+      hue,
+      sat,
+      light,
+      // slight size variance per tile
+      size: state.cell * rand(0.85, 1.05),
+    });
+  }
+
+  function stampMosaicAround(x0, y0, x1, y1) {
+    const now = performance.now();
+    // interpolate along the pointer path, so slow movement still leaves a dense trail
     const dx = x1 - x0;
     const dy = y1 - y0;
     const dist = Math.hypot(dx, dy);
-    const step = 10; // px
-    const n = Math.max(1, Math.min(12, Math.floor(dist / step)));
-    for (let i = 0; i < n; i++) {
-      const t = n === 1 ? 1 : (i + 1) / n;
-      pushPoint(x0 + dx * t, y0 + dy * t);
+    const steps = Math.max(1, Math.min(10, Math.floor(dist / 14)));
+
+    for (let s = 0; s < steps; s++) {
+      const t = steps === 1 ? 1 : (s + 1) / steps;
+      const x = x0 + dx * t;
+      const y = y0 + dy * t;
+
+      for (let i = 0; i < state.stampsPerMove; i++) {
+        const a = rand(0, Math.PI * 2);
+        const r = Math.sqrt(Math.random()) * state.radius; // uniform in circle
+        const sx = x + Math.cos(a) * r;
+        const sy = y + Math.sin(a) * r;
+        stampAt(sx, sy, now + i); // tiny offset => subtle hue variation
+      }
     }
   }
 
@@ -98,9 +113,9 @@
     const y = e.clientY;
 
     if (state.last) {
-      spawnAlongLine(state.last.x, state.last.y, x, y);
+      stampMosaicAround(state.last.x, state.last.y, x, y);
     } else {
-      pushPoint(x, y);
+      stampMosaicAround(x, y, x, y);
     }
 
     state.last = { x, y };
@@ -108,45 +123,40 @@
 
   function tick(now) {
     ctx.clearRect(0, 0, state.w, state.h);
+    ctx.globalCompositeOperation = "source-over";
 
-    // Slight glow by additive blending
-    ctx.globalCompositeOperation = "lighter";
-
-    const { r, g, b } = state.rgb;
-    const next = [];
-
-    for (const p of state.points) {
-      const age = now - p.born;
-      const t = clamp(age / p.ttl, 0, 1);
+    const dead = [];
+    for (const [key, tile] of state.tiles) {
+      const age = now - tile.born;
+      const t = clamp(age / state.ttl, 0, 1);
       const alpha = 1 - t;
-      if (alpha <= 0) continue;
+      if (alpha <= 0.001) {
+        dead.push(key);
+        continue;
+      }
 
-      // tiny drift
-      p.x += p.vx;
-      p.y += p.vy;
+      const cx = tile.cx * state.dpr;
+      const cy = tile.cy * state.dpr;
+      const size = tile.size * state.dpr;
+      const pad = 1.2 * state.dpr;
 
-      const radius = p.r * (0.9 + 0.25 * (1 - t));
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${0.35 * alpha})`;
-      ctx.fill();
+      // a "blocky but soft" look: filled square + faint outline
+      ctx.fillStyle = `hsla(${tile.hue}, ${tile.sat}%, ${tile.light}%, ${0.38 * alpha})`;
+      ctx.fillRect(cx, cy, size, size);
 
-      next.push(p);
+      ctx.strokeStyle = `hsla(${tile.hue}, ${tile.sat}%, ${tile.light + 10}%, ${0.25 * alpha})`;
+      ctx.lineWidth = 1 * state.dpr;
+      ctx.strokeRect(cx + pad, cy + pad, Math.max(0, size - 2 * pad), Math.max(0, size - 2 * pad));
     }
 
-    state.points = next;
+    for (const key of dead) state.tiles.delete(key);
     requestAnimationFrame(tick);
   }
 
   // Init
-  updateThemeColor();
   resize();
   window.addEventListener("resize", resize, { passive: true });
   window.addEventListener("pointermove", onPointerMove, { passive: true });
-
-  // Track dark/light mode toggles
-  const mo = new MutationObserver(updateThemeColor);
-  mo.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
   requestAnimationFrame(tick);
 })();
