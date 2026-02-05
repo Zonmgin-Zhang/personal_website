@@ -161,19 +161,41 @@ blockquote {
 .about-article {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .about-section {
-  padding: 1.25rem 1.5rem;
-  background-color: var(--global-card-bg-color);
-  border: 1px solid var(--global-divider-color);
-  border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-  transition: box-shadow 0.2s ease;
+  padding: 1.5rem 1.75rem;
+  background: var(--global-card-bg-color);
+  border: 2px solid transparent;
+  border-radius: 12px;
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.07),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--global-theme-color) 0%, var(--global-hover-color) 100%);
+    z-index: -1;
+    opacity: 0.15;
+    transition: opacity 0.3s ease;
+  }
 
   &:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transform: translateY(-3px);
+    box-shadow: 
+      0 12px 24px rgba(0, 0, 0, 0.15),
+      0 6px 12px rgba(0, 0, 0, 0.1);
+
+    &::before {
+      opacity: 0.3;
+    }
   }
 }
 
@@ -195,6 +217,33 @@ blockquote {
 .about-section--news {
   .news {
     margin-top: 0.5rem;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+
+    // Custom scrollbar styling
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--global-divider-color);
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--global-theme-color);
+      border-radius: 10px;
+      transition: background 0.2s ease;
+
+      &:hover {
+        background: var(--global-hover-color);
+      }
+    }
+
+    // Firefox scrollbar
+    scrollbar-width: thin;
+    scrollbar-color: var(--global-theme-color) var(--global-divider-color);
 
     .table {
       margin-bottom: 0;
@@ -218,19 +267,26 @@ blockquote {
     margin-bottom: 1rem;
     color: var(--global-text-color-light);
     font-style: italic;
+    font-size: 0.9rem;
   }
 
   ol.bibliography {
     margin-bottom: 0;
 
     li {
-      margin-bottom: 1.25rem;
-      padding-bottom: 1.25rem;
+      margin-bottom: 1.35rem;
+      padding: 1rem;
       border-bottom: 1px solid var(--global-divider-color);
+      border-radius: 6px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: var(--global-divider-color);
+        padding-left: 1.25rem;
+      }
 
       &:last-child {
         margin-bottom: 0;
-        padding-bottom: 0;
         border-bottom: none;
       }
     }
@@ -238,12 +294,25 @@ blockquote {
 }
 
 .about-section-title {
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.85rem;
   padding-bottom: 0.5rem;
-  font-size: 1.35rem;
-  font-weight: 600;
-  border-bottom: 2px solid var(--global-theme-color);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--global-theme-color);
   display: inline-block;
+  letter-spacing: -0.3px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--global-theme-color) 0%, var(--global-hover-color) 70%, transparent 100%);
+    border-radius: 2px;
+  }
 }
 
 .about-social-icons {
@@ -312,8 +381,12 @@ blockquote {
 
     .more-info {
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--global-text-color-light);
+      word-break: break-word;
+      overflow-wrap: break-word;
+      line-height: 1.5;
+      padding: 0 0.25rem;
 
       p {
         margin: 0;
@@ -324,8 +397,17 @@ blockquote {
 
 // Responsive adjustments
 @media (max-width: 575.98px) {
+  .about-article {
+    gap: 1.5rem;
+  }
+
   .about-section {
-    padding: 1rem;
+    padding: 1.25rem;
+    border-radius: 10px;
+
+    &:hover {
+      transform: translateY(-1px);
+    }
   }
 
   .about-section--bio {
@@ -339,7 +421,21 @@ blockquote {
         max-width: 120px;
         margin: 0 auto;
       }
+
+      .more-info {
+        font-size: 0.7rem;
+      }
     }
+  }
+
+  .about-section--news {
+    .news {
+      max-height: 250px;
+    }
+  }
+
+  .about-section-title {
+    font-size: 1.25rem;
   }
 
   .post > .post-header {
