@@ -158,49 +158,72 @@ blockquote {
  * About page layout and sections
  ******************************************************************************/
 
+// 页面整体背景装饰
+.post {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--global-theme-color) 0%, transparent 70%);
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--global-hover-color) 0%, transparent 70%);
+    opacity: 0.03;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
 .about-article {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .about-section {
   padding: 1.5rem 1.75rem;
   background: var(--global-card-bg-color);
-  border: 2px solid transparent;
+  border: 1px solid var(--global-divider-color);
   border-radius: 12px;
   box-shadow: 
-    0 4px 6px rgba(0, 0, 0, 0.07),
-    0 1px 3px rgba(0, 0, 0, 0.06);
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
   position: relative;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: visible;
 
+  // 微妙的顶部装饰线
   &::before {
     content: '';
     position: absolute;
-    inset: -2px;
-    border-radius: 12px;
-    background: linear-gradient(135deg, var(--global-theme-color) 0%, var(--global-hover-color) 100%);
-    z-index: -1;
-    opacity: 0.15;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover {
-    transform: translateY(-3px);
-    box-shadow: 
-      0 12px 24px rgba(0, 0, 0, 0.15),
-      0 6px 12px rgba(0, 0, 0, 0.1);
-
-    &::before {
-      opacity: 0.3;
-    }
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent 0%, var(--global-theme-color) 50%, transparent 100%);
+    opacity: 0.2;
   }
 }
 
 .about-section--bio {
   padding: 1.5rem;
+  background: linear-gradient(135deg, var(--global-card-bg-color) 0%, var(--global-card-bg-color) 100%);
 
   .bio-content {
     p {
@@ -275,15 +298,8 @@ blockquote {
 
     li {
       margin-bottom: 1.35rem;
-      padding: 1rem;
+      padding: 0.75rem 0;
       border-bottom: 1px solid var(--global-divider-color);
-      border-radius: 6px;
-      transition: all 0.2s ease;
-
-      &:hover {
-        background: var(--global-divider-color);
-        padding-left: 1.25rem;
-      }
 
       &:last-child {
         margin-bottom: 0;
@@ -357,14 +373,32 @@ blockquote {
 
 // About page header styling
 .post > .post-header {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   text-align: center;
+  position: relative;
+  z-index: 1;
 
   .post-title {
     font-size: 2.25rem;
     font-weight: 700;
     margin-bottom: 0.35rem;
     letter-spacing: -0.5px;
+    position: relative;
+    display: inline-block;
+
+    // 微妙的文字装饰
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--global-theme-color), transparent);
+      border-radius: 2px;
+      opacity: 0.4;
+    }
   }
 
   .desc {
@@ -397,6 +431,13 @@ blockquote {
 
 // Responsive adjustments
 @media (max-width: 575.98px) {
+  .post::before,
+  .post::after {
+    width: 300px;
+    height: 300px;
+    opacity: 0.02;
+  }
+
   .about-article {
     gap: 1.5rem;
   }
@@ -404,10 +445,6 @@ blockquote {
   .about-section {
     padding: 1.25rem;
     border-radius: 10px;
-
-    &:hover {
-      transform: translateY(-1px);
-    }
   }
 
   .about-section--bio {
