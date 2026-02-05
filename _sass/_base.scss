@@ -155,16 +155,95 @@ blockquote {
 }
 
 /*******************************************************************************
- * About page section spacing
+ * About page layout and sections
  ******************************************************************************/
 
-.about-section-title {
-  margin-top: 0.9rem;
-  margin-bottom: 0.3rem;
+.about-article {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
-.about-section-title + .news {
-  margin-top: 0.15rem;
+.about-section {
+  padding: 1.25rem 1.5rem;
+  background-color: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  }
+}
+
+.about-section--bio {
+  padding: 1.5rem;
+
+  .bio-content {
+    p {
+      margin-bottom: 0.85rem;
+      line-height: 1.7;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.about-section--news {
+  .news {
+    margin-top: 0.5rem;
+
+    .table {
+      margin-bottom: 0;
+
+      th {
+        font-weight: 500;
+        color: var(--global-text-color-light);
+        white-space: nowrap;
+        padding-right: 1.25rem;
+      }
+
+      td {
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+.about-section--publications {
+  .post-description {
+    margin-bottom: 1rem;
+    color: var(--global-text-color-light);
+    font-style: italic;
+  }
+
+  ol.bibliography {
+    margin-bottom: 0;
+
+    li {
+      margin-bottom: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--global-divider-color);
+
+      &:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+.about-section-title {
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 600;
+  border-bottom: 2px solid var(--global-theme-color);
+  display: inline-block;
 }
 
 .about-social-icons {
@@ -205,6 +284,69 @@ blockquote {
 .about-social-icons--profile {
   justify-content: center;
   margin: 0.35rem 0 0;
+}
+
+// About page header styling
+.post > .post-header {
+  margin-bottom: 1.25rem;
+  text-align: center;
+
+  .post-title {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.5px;
+  }
+
+  .desc {
+    color: var(--global-text-color-light);
+    font-size: 1rem;
+    margin: 0;
+  }
+}
+
+// Profile within bio section adjustments
+.about-section--bio {
+  .profile {
+    margin-bottom: 0.5rem;
+
+    .more-info {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--global-text-color-light);
+
+      p {
+        margin: 0;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 575.98px) {
+  .about-section {
+    padding: 1rem;
+  }
+
+  .about-section--bio {
+    .profile {
+      float: none !important;
+      width: 100%;
+      text-align: center;
+      margin: 0 auto 1rem;
+
+      figure {
+        max-width: 120px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  .post > .post-header {
+    .post-title {
+      font-size: 1.75rem;
+    }
+  }
 }
 
 // Checklist

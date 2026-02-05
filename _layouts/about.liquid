@@ -16,41 +16,43 @@ layout: default
     {% endif %}
   </header>
 
-  <article>
-    {% if page.profile %}
-      <div class="profile profile-about float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
-      rounded' %}
+  <article class="about-article">
+    <!-- Bio section -->
+    <section class="about-section about-section--bio">
+      {% if page.profile %}
+        <div class="profile profile-about float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
+          {% if page.profile.image %}
+            {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+            {% if page.profile.image_circular %}
+              {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+            {% else %}
+              {% assign profile_image_class = 'img-fluid z-depth-1 rounded' %}
+            {% endif %}
+            {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.15}}px, (min-width: 576px) 15vw, 95vw"{% endcapture %}
+            {%
+              include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+              cache_bust=true
+            %}
           {% endif %}
-          {% capture sizes %}(min-width: {{ site.max_width }}) {{ site.max_width | minus: 30 | times: 0.15}}px, (min-width: 576px)
-      15vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
-        {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
-        {% endif %}
-        {% if page.social_in_profile %}
-          <div class="about-social-icons about-social-icons--profile">
-            {% social_links %}
-          </div>
-        {% endif %}
-      </div>
-    {% endif %}
-
-    <div class="clearfix">{{ content }}</div>
+          {% if page.profile.more_info %}
+            <div class="more-info">{{ page.profile.more_info }}</div>
+          {% endif %}
+          {% if page.social_in_profile %}
+            <div class="about-social-icons about-social-icons--profile">
+              {% social_links %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+      <div class="clearfix bio-content">{{ content }}</div>
+    </section>
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
+    <section class="about-section about-section--news">
       <h2 class="about-section-title">News</h2>
       {% include news.liquid limit=true %}
+    </section>
     {% endif %}
 
     <!-- Latest posts -->
@@ -63,9 +65,11 @@ layout: default
 
     <!-- Selected papers -->
     {% if page.selected_papers %}
+    <section class="about-section about-section--publications">
       <h2 class="about-section-title">Selected Publications</h2>
       <p class="post-description">* indicates equal contribution.</p>
       {% include selected_papers.liquid %}
+    </section>
     {% endif %}
 
     <!-- Social -->
