@@ -158,35 +158,9 @@ blockquote {
  * About page layout and sections
  ******************************************************************************/
 
-// 页面整体背景装饰
+// 页面整体微妙背景点缀
 .post {
   position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    right: -10%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle, var(--global-theme-color) 0%, transparent 70%);
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -100px;
-    left: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, var(--global-hover-color) 0%, transparent 70%);
-    opacity: 0.03;
-    pointer-events: none;
-    z-index: 0;
-  }
 }
 
 .about-article {
@@ -195,6 +169,91 @@ blockquote {
   gap: 2rem;
   position: relative;
   z-index: 1;
+}
+
+/*******************************************************************************
+ * Doodle stick figures decoration
+ ******************************************************************************/
+
+.doodle-figures {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: visible;
+}
+
+.doodle {
+  position: absolute;
+  color: var(--global-theme-color);
+  opacity: 0.18;
+  transition: opacity 0.3s ease;
+}
+
+// Waving figure - top-right of article
+.doodle--wave {
+  width: 46px;
+  top: -14px;
+  right: -28px;
+  animation: doodle-bob 3s ease-in-out infinite;
+}
+
+// Hanging figure - left side between news and publications
+.doodle--hang {
+  width: 38px;
+  top: 52%;
+  left: -32px;
+  animation: doodle-swing 4s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+// Pulling figures - centered below publications
+.doodle--pull {
+  width: 140px;
+  bottom: -52px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: doodle-pull 2.5s ease-in-out infinite alternate;
+}
+
+// Floating decorative stars/dots
+.doodle--stars {
+  width: 100%;
+  top: 50%;
+  left: 0;
+  opacity: 1;
+}
+
+@keyframes doodle-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes doodle-swing {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes doodle-pull {
+  0% { transform: translateX(-50%) scaleX(0.97); }
+  100% { transform: translateX(-50%) scaleX(1.03); }
+}
+
+@media (max-width: 767.98px) {
+  .doodle--wave {
+    width: 32px;
+    right: -6px;
+    top: -10px;
+  }
+
+  .doodle--hang {
+    display: none;
+  }
+
+  .doodle--pull {
+    width: 100px;
+    bottom: -36px;
+  }
 }
 
 .about-section {
@@ -223,7 +282,6 @@ blockquote {
 
 .about-section--bio {
   padding: 1.5rem;
-  background: linear-gradient(135deg, var(--global-card-bg-color) 0%, var(--global-card-bg-color) 100%);
 
   .bio-content {
     p {
@@ -431,13 +489,6 @@ blockquote {
 
 // Responsive adjustments
 @media (max-width: 575.98px) {
-  .post::before,
-  .post::after {
-    width: 300px;
-    height: 300px;
-    opacity: 0.02;
-  }
-
   .about-article {
     gap: 1.5rem;
   }
