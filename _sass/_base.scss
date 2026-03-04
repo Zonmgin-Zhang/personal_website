@@ -237,20 +237,20 @@ blockquote {
   animation: doodle-bob 3.2s ease-in-out infinite;
 }
 
-// News card: sitting-reading stickman at BOTTOM-RIGHT
+// News card: sitting-reading stickman at BOTTOM-RIGHT, one stickman-height up
 .doodle-news-man {
   width: 62px;
-  bottom: 8px;
+  bottom: 4.5rem;
   right: 14px;
   opacity: 0.55;
   animation: doodle-bob 4s ease-in-out infinite;
   animation-delay: 1s;
 }
 
-// Publications card: graduation stickman at BOTTOM-RIGHT
+// Publications card: graduation stickman at BOTTOM-RIGHT, one stickman-height up
 .doodle-grad-man {
   width: 62px;
-  bottom: 8px;
+  bottom: 4.5rem;
   right: 14px;
   opacity: 0.6;
   animation: doodle-bob 3.5s ease-in-out infinite;
@@ -310,7 +310,7 @@ blockquote {
 
 .about-section--news {
   border-left: 3px solid #f0c040;
-  padding-bottom: 5rem; // space so news stickman doesn't overlap last row
+  padding-bottom: 1.5rem;
 
   .news {
     margin-top: 0.5rem;
@@ -361,7 +361,7 @@ blockquote {
 
 .about-section--publications {
   border-left: 3px solid #5cb85c;
-  padding-bottom: 5rem; // space for graduation stickman
+  padding-bottom: 1.5rem;
 
   .post-description {
     margin-bottom: 1rem;
