@@ -180,10 +180,10 @@ blockquote {
   pointer-events: none;
 }
 
-// Bio card: waving stickman at BOTTOM-LEFT
+// Bio card: waving stickman at BOTTOM-LEFT, one stickman-height above bottom edge
 .doodle-bio-man {
   width: 62px;
-  bottom: 10px;
+  bottom: 4.5rem;  // one stickman height up from card base
   left: 16px;
   opacity: 0.6;
   animation: doodle-bob 3.2s ease-in-out infinite;
@@ -245,8 +245,7 @@ blockquote {
 }
 
 .about-section--bio {
-  padding: 1.5rem;
-  padding-bottom: 4.5rem; // space so stickman doesn't overlap last paragraph
+  padding: 1.5rem;   // uniform padding, no extra bottom space
   border-left: 3px solid var(--global-theme-color);
 
   .bio-content {
