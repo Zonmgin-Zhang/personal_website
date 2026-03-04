@@ -163,6 +163,54 @@ blockquote {
   position: relative;
 }
 
+// Scattered doodle decorations — floated inline SVGs at edges of the article
+.about-scatter {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+}
+
+.about-scatter--top-left {
+  top: 60px;
+  left: -48px;
+  width: 44px;
+}
+
+.about-scatter--top-right {
+  top: 120px;
+  right: -52px;
+  width: 52px;
+}
+
+.about-scatter--mid-left {
+  top: 44%;
+  left: -56px;
+  width: 50px;
+}
+
+.about-scatter--mid-right {
+  top: 58%;
+  right: -52px;
+  width: 44px;
+}
+
+.about-scatter--bottom-left {
+  bottom: 100px;
+  left: -48px;
+  width: 46px;
+}
+
+.about-scatter--bottom-right {
+  bottom: 160px;
+  right: -52px;
+  width: 48px;
+}
+
+@media (max-width: 900px) {
+  .about-scatter { display: none; }
+}
+
 .about-article {
   display: flex;
   flex-direction: column;

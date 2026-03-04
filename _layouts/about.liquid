@@ -17,6 +17,50 @@ layout: default
   </header>
 
   <article class="about-article">
+
+    <!-- ── Scattered doodle ornaments around the article ── -->
+    <!-- top-left: spinning star -->
+    <svg class="about-scatter about-scatter--top-left" aria-hidden="true" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+      <path d="M22 4 L25 16 L37 12 L28 21 L38 27 L26 26 L24 38 L20 27 L8 30 L17 22 L8 15 L20 18 Z"
+            fill="none" stroke="#333" stroke-width="1.6" stroke-linejoin="round"/>
+    </svg>
+
+    <!-- top-right: three bouncing circles -->
+    <svg class="about-scatter about-scatter--top-right" aria-hidden="true" viewBox="0 0 52 26" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="13" r="6" fill="none" stroke="#333" stroke-width="1.8"/>
+      <circle cx="26" cy="8"  r="4" fill="#333" opacity="0.25"/>
+      <circle cx="42" cy="16" r="7" fill="none" stroke="#333" stroke-width="1.4" stroke-dasharray="3 2"/>
+    </svg>
+
+    <!-- mid-left: wavy line with dot -->
+    <svg class="about-scatter about-scatter--mid-left" aria-hidden="true" viewBox="0 0 50 34" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 10 C10 4, 18 16, 26 10 C34 4, 42 16, 48 10" fill="none" stroke="#333" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="26" cy="26" r="4" fill="none" stroke="#333" stroke-width="1.5"/>
+      <circle cx="26" cy="26" r="1.5" fill="#333" opacity="0.4"/>
+    </svg>
+
+    <!-- mid-right: cross + tiny circle -->
+    <svg class="about-scatter about-scatter--mid-right" aria-hidden="true" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+      <line x1="22" y1="6"  x2="22" y2="38" stroke="#333" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="6"  y1="22" x2="38" y2="22" stroke="#333" stroke-width="1.8" stroke-linecap="round"/>
+      <line x1="10" y1="10" x2="34" y2="34" stroke="#333" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+      <line x1="34" y1="10" x2="10" y2="34" stroke="#333" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+    </svg>
+
+    <!-- bottom-left: two overlapping circles (Venn) -->
+    <svg class="about-scatter about-scatter--bottom-left" aria-hidden="true" viewBox="0 0 46 30" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="16" cy="15" r="12" fill="none" stroke="#333" stroke-width="1.8"/>
+      <circle cx="30" cy="15" r="12" fill="none" stroke="#333" stroke-width="1.8"/>
+    </svg>
+
+    <!-- bottom-right: zigzag / lightning -->
+    <svg class="about-scatter about-scatter--bottom-right" aria-hidden="true" viewBox="0 0 48 44" xmlns="http://www.w3.org/2000/svg">
+      <polyline points="28,4 16,20 30,20 14,40" fill="none" stroke="#333" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="38" cy="12" r="3" fill="#333" opacity="0.2"/>
+      <circle cx="10" cy="30" r="2" fill="#333" opacity="0.25"/>
+    </svg>
+    <!-- ── end scatter ornaments ── -->
+
     <!-- Bio section -->
     <section class="about-section about-section--bio">
       {% if page.profile %}
