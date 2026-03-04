@@ -185,53 +185,65 @@ blockquote {
 
 .doodle {
   position: absolute;
-  color: var(--global-theme-color);
-  opacity: 0.18;
-  transition: opacity 0.3s ease;
 }
 
-// Waving figure - top-right of article
-.doodle--wave {
-  width: 46px;
-  top: -14px;
-  right: -28px;
+// Guy sitting on top-right corner saying Hi
+.doodle--sitter {
+  width: 70px;
+  top: -32px;
+  right: -20px;
   animation: doodle-bob 3s ease-in-out infinite;
 }
 
-// Hanging figure - left side between news and publications
-.doodle--hang {
-  width: 38px;
-  top: 52%;
-  left: -32px;
+// Guy climbing down rope on left side
+.doodle--climber {
+  width: 42px;
+  top: 42%;
+  left: -36px;
   animation: doodle-swing 4s ease-in-out infinite;
   transform-origin: top center;
 }
 
-// Pulling figures - centered below publications
-.doodle--pull {
-  width: 140px;
+// Two guys pulling rope below publications
+.doodle--pullers {
+  width: 200px;
   bottom: -52px;
   left: 50%;
   transform: translateX(-50%);
   animation: doodle-pull 2.5s ease-in-out infinite alternate;
 }
 
-// Floating decorative stars/dots
-.doodle--stars {
+// Reading figure on right side between news and publications
+.doodle--reader {
+  width: 55px;
+  top: 72%;
+  right: -32px;
+  animation: doodle-bob 4s ease-in-out infinite;
+  animation-delay: 1s;
+}
+
+// Top scatter doodles
+.doodle--scatter-top {
   width: 100%;
-  top: 50%;
+  top: 28%;
   left: 0;
-  opacity: 1;
+}
+
+// Bottom scatter doodles
+.doodle--scatter-bottom {
+  width: 100%;
+  bottom: 20%;
+  left: 0;
 }
 
 @keyframes doodle-bob {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+  50% { transform: translateY(-6px); }
 }
 
 @keyframes doodle-swing {
-  0%, 100% { transform: rotate(-3deg); }
-  50% { transform: rotate(3deg); }
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
 }
 
 @keyframes doodle-pull {
@@ -240,19 +252,23 @@ blockquote {
 }
 
 @media (max-width: 767.98px) {
-  .doodle--wave {
-    width: 32px;
-    right: -6px;
-    top: -10px;
+  .doodle--sitter {
+    width: 50px;
+    right: -4px;
+    top: -24px;
   }
 
-  .doodle--hang {
+  .doodle--climber {
     display: none;
   }
 
-  .doodle--pull {
-    width: 100px;
-    bottom: -36px;
+  .doodle--reader {
+    display: none;
+  }
+
+  .doodle--pullers {
+    width: 150px;
+    bottom: -40px;
   }
 }
 
@@ -282,6 +298,7 @@ blockquote {
 
 .about-section--bio {
   padding: 1.5rem;
+  border-left: 3px solid var(--global-theme-color);
 
   .bio-content {
     p {
@@ -296,6 +313,8 @@ blockquote {
 }
 
 .about-section--news {
+  border-left: 3px solid #f0c040;
+
   .news {
     margin-top: 0.5rem;
     max-height: 320px;
@@ -344,6 +363,8 @@ blockquote {
 }
 
 .about-section--publications {
+  border-left: 3px solid #5cb85c;
+
   .post-description {
     margin-bottom: 1rem;
     color: var(--global-text-color-light);
