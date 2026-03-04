@@ -163,52 +163,29 @@ blockquote {
   position: relative;
 }
 
-// Scattered doodle decorations — floated inline SVGs at edges of the article
+// Scattered doodle decorations — single wrapper so SVGs are never flex items
+.about-scatter-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 0;
+}
+
 .about-scatter {
   position: absolute;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 0.55;
+  opacity: 0.5;
 }
 
-.about-scatter--top-left {
-  top: 60px;
-  left: -48px;
-  width: 44px;
-}
+.about-scatter--top-left    { top: 60px;     left: -52px;  }
+.about-scatter--top-right   { top: 120px;    right: -60px; }
+.about-scatter--mid-left    { top: 44%;      left: -58px;  }
+.about-scatter--mid-right   { top: 60%;      right: -52px; }
+.about-scatter--bottom-left { bottom: 120px; left: -52px;  }
+.about-scatter--bottom-right{ bottom: 180px; right: -56px; }
 
-.about-scatter--top-right {
-  top: 120px;
-  right: -52px;
-  width: 52px;
-}
-
-.about-scatter--mid-left {
-  top: 44%;
-  left: -56px;
-  width: 50px;
-}
-
-.about-scatter--mid-right {
-  top: 58%;
-  right: -52px;
-  width: 44px;
-}
-
-.about-scatter--bottom-left {
-  bottom: 100px;
-  left: -48px;
-  width: 46px;
-}
-
-.about-scatter--bottom-right {
-  bottom: 160px;
-  right: -52px;
-  width: 48px;
-}
-
-@media (max-width: 900px) {
-  .about-scatter { display: none; }
+@media (max-width: 960px) {
+  .about-scatter-layer { display: none; }
 }
 
 .about-article {
