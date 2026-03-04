@@ -172,59 +172,52 @@ blockquote {
 }
 
 /*******************************************************************************
- * Doodle stick figures — placed inside each card
+ * Doodle stick figures — each absolutely positioned in its own card
  ******************************************************************************/
 
-// Bio card: waving stickman at bottom-right corner
+.section-doodle {
+  position: absolute;
+  pointer-events: none;
+}
+
+// Bio card: waving stickman at BOTTOM-LEFT
 .doodle-bio-man {
-  position: absolute;
-  width: 80px;
-  bottom: 8px;
-  right: 12px;
-  pointer-events: none;
-  animation: doodle-bob 3s ease-in-out infinite;
-  opacity: 0.55;
+  width: 62px;
+  bottom: 10px;
+  left: 16px;
+  opacity: 0.6;
+  animation: doodle-bob 3.2s ease-in-out infinite;
 }
 
-// News card: stickman at top-right corner
+// News card: sitting-reading stickman at BOTTOM-RIGHT
 .doodle-news-man {
-  position: absolute;
-  width: 60px;
-  top: 10px;
+  width: 62px;
+  bottom: 8px;
   right: 14px;
-  pointer-events: none;
-  animation: doodle-bob 4s ease-in-out infinite;
-  animation-delay: 0.8s;
-  opacity: 0.5;
-}
-
-// Publications card: two stickmen pulling rope at the bottom
-.doodle-pullers-wrap {
-  margin-top: 1.5rem;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
   opacity: 0.55;
-  animation: doodle-pull 2.5s ease-in-out infinite alternate;
+  animation: doodle-bob 4s ease-in-out infinite;
+  animation-delay: 1s;
 }
 
-.doodle-pullers-svg {
-  width: min(300px, 80%);
+// Publications card: graduation stickman at BOTTOM-RIGHT
+.doodle-grad-man {
+  width: 62px;
+  bottom: 8px;
+  right: 14px;
+  opacity: 0.6;
+  animation: doodle-bob 3.5s ease-in-out infinite;
+  animation-delay: 0.5s;
 }
 
 @keyframes doodle-bob {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-6px); }
-}
-
-@keyframes doodle-pull {
-  0%   { transform: scaleX(0.97); }
-  100% { transform: scaleX(1.03); }
+  50%       { transform: translateY(-5px); }
 }
 
 @media (max-width: 575.98px) {
-  .doodle-bio-man  { width: 55px; }
-  .doodle-news-man { width: 44px; }
+  .doodle-bio-man,
+  .doodle-news-man,
+  .doodle-grad-man { width: 46px; }
 }
 
 .about-section {
@@ -253,7 +246,7 @@ blockquote {
 
 .about-section--bio {
   padding: 1.5rem;
-  padding-bottom: 5rem; // space for stickman
+  padding-bottom: 4.5rem; // space so stickman doesn't overlap last paragraph
   border-left: 3px solid var(--global-theme-color);
 
   .bio-content {
@@ -270,7 +263,7 @@ blockquote {
 
 .about-section--news {
   border-left: 3px solid #f0c040;
-  padding-right: 80px; // space for news stickman on the right
+  padding-bottom: 5rem; // space so news stickman doesn't overlap last row
 
   .news {
     margin-top: 0.5rem;
@@ -321,6 +314,7 @@ blockquote {
 
 .about-section--publications {
   border-left: 3px solid #5cb85c;
+  padding-bottom: 5rem; // space for graduation stickman
 
   .post-description {
     margin-bottom: 1rem;
