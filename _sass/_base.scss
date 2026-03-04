@@ -172,104 +172,59 @@ blockquote {
 }
 
 /*******************************************************************************
- * Doodle stick figures decoration
+ * Doodle stick figures — placed inside each card
  ******************************************************************************/
 
-.doodle-figures {
+// Bio card: waving stickman at bottom-right corner
+.doodle-bio-man {
   position: absolute;
-  inset: 0;
+  width: 80px;
+  bottom: 8px;
+  right: 12px;
   pointer-events: none;
-  z-index: 2;
-  overflow: visible;
-}
-
-.doodle {
-  position: absolute;
-}
-
-// Guy sitting on top-right corner saying Hi
-.doodle--sitter {
-  width: 70px;
-  top: -32px;
-  right: -20px;
   animation: doodle-bob 3s ease-in-out infinite;
+  opacity: 0.55;
 }
 
-// Guy climbing down rope on left side
-.doodle--climber {
-  width: 42px;
-  top: 42%;
-  left: -36px;
-  animation: doodle-swing 4s ease-in-out infinite;
-  transform-origin: top center;
+// News card: stickman at top-right corner
+.doodle-news-man {
+  position: absolute;
+  width: 60px;
+  top: 10px;
+  right: 14px;
+  pointer-events: none;
+  animation: doodle-bob 4s ease-in-out infinite;
+  animation-delay: 0.8s;
+  opacity: 0.5;
 }
 
-// Two guys pulling rope below publications
-.doodle--pullers {
-  width: 200px;
-  bottom: -52px;
-  left: 50%;
-  transform: translateX(-50%);
+// Publications card: two stickmen pulling rope at the bottom
+.doodle-pullers-wrap {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0.55;
   animation: doodle-pull 2.5s ease-in-out infinite alternate;
 }
 
-// Reading figure on right side between news and publications
-.doodle--reader {
-  width: 55px;
-  top: 72%;
-  right: -32px;
-  animation: doodle-bob 4s ease-in-out infinite;
-  animation-delay: 1s;
-}
-
-// Top scatter doodles
-.doodle--scatter-top {
-  width: 100%;
-  top: 28%;
-  left: 0;
-}
-
-// Bottom scatter doodles
-.doodle--scatter-bottom {
-  width: 100%;
-  bottom: 20%;
-  left: 0;
+.doodle-pullers-svg {
+  width: min(300px, 80%);
 }
 
 @keyframes doodle-bob {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-@keyframes doodle-swing {
-  0%, 100% { transform: rotate(-4deg); }
-  50% { transform: rotate(4deg); }
+  50%       { transform: translateY(-6px); }
 }
 
 @keyframes doodle-pull {
-  0% { transform: translateX(-50%) scaleX(0.97); }
-  100% { transform: translateX(-50%) scaleX(1.03); }
+  0%   { transform: scaleX(0.97); }
+  100% { transform: scaleX(1.03); }
 }
 
-@media (max-width: 767.98px) {
-  .doodle--sitter {
-    width: 50px;
-    right: -4px;
-    top: -24px;
-  }
-
-  .doodle--climber {
-    display: none;
-  }
-
-  .doodle--reader {
-    display: none;
-  }
-
-  .doodle--pullers {
-    width: 150px;
-    bottom: -40px;
-  }
+@media (max-width: 575.98px) {
+  .doodle-bio-man  { width: 55px; }
+  .doodle-news-man { width: 44px; }
 }
 
 .about-section {
@@ -298,6 +253,7 @@ blockquote {
 
 .about-section--bio {
   padding: 1.5rem;
+  padding-bottom: 5rem; // space for stickman
   border-left: 3px solid var(--global-theme-color);
 
   .bio-content {
@@ -314,6 +270,7 @@ blockquote {
 
 .about-section--news {
   border-left: 3px solid #f0c040;
+  padding-right: 80px; // space for news stickman on the right
 
   .news {
     margin-top: 0.5rem;
