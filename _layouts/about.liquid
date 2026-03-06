@@ -47,26 +47,33 @@ layout: default
         </div>
       {% endif %}
       <div class="clearfix bio-content">{{ content }}</div>
-      <!-- Waving stickman bottom-LEFT of bio card (position:absolute, no layout impact) -->
-      <svg class="section-doodle doodle-bio-man" aria-hidden="true" viewBox="0 0 80 82" xmlns="http://www.w3.org/2000/svg">
+      <!-- Sea fishing stickman at bottom-left of bio card -->
+      <svg class="section-doodle doodle-bio-man" aria-hidden="true" viewBox="0 0 112 92" xmlns="http://www.w3.org/2000/svg">
+        <!-- gentle waves -->
+        <path d="M6 76 C18 70, 28 82, 40 76 C52 70, 62 82, 74 76 C86 70, 96 82, 106 76" fill="none" stroke="#333" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
         <!-- head -->
-        <circle cx="36" cy="10" r="8.5" fill="none" stroke="#333" stroke-width="2.6"/>
-        <circle cx="33" cy="8.5" r="1.5" fill="#333"/>
-        <circle cx="39" cy="8.5" r="1.5" fill="#333"/>
-        <path d="M33 14 Q36 17 39 14" fill="none" stroke="#333" stroke-width="1.6" stroke-linecap="round"/>
+        <circle cx="28" cy="14" r="8.5" fill="none" stroke="#333" stroke-width="2.6"/>
+        <circle cx="25" cy="12.5" r="1.4" fill="#333"/>
+        <circle cx="31" cy="12.5" r="1.4" fill="#333"/>
+        <path d="M25 18 Q28 20.5 31 18" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
         <!-- body -->
-        <line x1="36" y1="18.5" x2="36" y2="48" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
+        <line x1="28" y1="22.5" x2="28" y2="50" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
         <!-- legs -->
-        <line x1="36" y1="48" x2="24" y2="70" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
-        <line x1="36" y1="48" x2="48" y2="70" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
-        <!-- left arm resting down -->
-        <line x1="36" y1="30" x2="20" y2="42" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
-        <!-- right arm waving up -->
-        <line x1="36" y1="30" x2="58" y2="14" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
-        <!-- speech bubble -->
-        <rect x="54" y="0" rx="4" ry="4" width="26" height="14" fill="white" stroke="#333" stroke-width="1.4"/>
-        <text x="58" y="11" font-size="8" fill="#333" font-family="sans-serif" font-weight="600">Hi!</text>
-        <path d="M57 14 L54 20 L63 14" fill="white" stroke="#333" stroke-width="1.4" stroke-linejoin="round"/>
+        <line x1="28" y1="50" x2="18" y2="71" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
+        <line x1="28" y1="50" x2="38" y2="71" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
+        <!-- free arm -->
+        <line x1="28" y1="33" x2="15" y2="45" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
+        <!-- rod arm -->
+        <line x1="28" y1="33" x2="44" y2="24" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
+        <!-- fishing rod -->
+        <path d="M44 24 Q72 10 96 12" fill="none" stroke="#333" stroke-width="2.2" stroke-linecap="round"/>
+        <!-- line and hook -->
+        <path d="M96 12 Q100 26 94 44 Q91 55 92 62" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M92 62 Q94 66 90 68" fill="none" stroke="#333" stroke-width="1.3" stroke-linecap="round"/>
+        <!-- fish -->
+        <path d="M80 63 Q86 57 93 63 Q86 69 80 63 Z" fill="none" stroke="#333" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M80 63 L74 59 L74 67 Z" fill="none" stroke="#333" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="88" cy="62" r="1.2" fill="#333"/>
       </svg>
     </section>
 
@@ -75,34 +82,38 @@ layout: default
     <section class="about-section about-section--news">
       <h2 class="about-section-title">News</h2>
       {% include news.liquid limit=true %}
-      <!-- Stickman sitting on edge reading a tiny newspaper, bottom-right -->
-      <svg class="section-doodle doodle-news-man" aria-hidden="true" viewBox="0 0 68 75" xmlns="http://www.w3.org/2000/svg">
-        <!-- sitting surface line -->
-        <line x1="4" y1="36" x2="64" y2="36" stroke="#333" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.35"/>
+      <!-- Seaside fishing scene on a small pier, bottom-right -->
+      <svg class="section-doodle doodle-news-man" aria-hidden="true" viewBox="0 0 96 86" xmlns="http://www.w3.org/2000/svg">
+        <!-- pier -->
+        <line x1="16" y1="38" x2="64" y2="38" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+        <line x1="22" y1="38" x2="22" y2="54" stroke="#333" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+        <line x1="56" y1="38" x2="56" y2="54" stroke="#333" stroke-width="2" stroke-linecap="round" opacity="0.35"/>
+        <!-- waves -->
+        <path d="M44 69 C52 65, 58 73, 66 69 C74 65, 80 73, 88 69" fill="none" stroke="#333" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
         <!-- head -->
-        <circle cx="32" cy="10" r="8" fill="none" stroke="#333" stroke-width="2.5"/>
-        <circle cx="29" cy="8.5" r="1.3" fill="#333"/>
-        <circle cx="35" cy="8.5" r="1.3" fill="#333"/>
-        <path d="M29 14 Q32 16.5 35 14" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- torso (sitting) -->
-        <line x1="32" y1="18" x2="32" y2="36" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
-        <!-- legs dangling -->
-        <line x1="32" y1="36" x2="23" y2="57" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="23" y1="57" x2="18" y2="68" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="32" y1="36" x2="41" y2="57" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
-        <line x1="41" y1="57" x2="46" y2="68" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
-        <!-- left arm holding newspaper -->
-        <line x1="32" y1="25" x2="16" y2="24" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
-        <!-- right arm holding other side of newspaper -->
-        <line x1="32" y1="25" x2="52" y2="20" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
-        <!-- newspaper being held -->
-        <rect x="14" y="16" rx="2" ry="2" width="40" height="26" fill="white" stroke="#333" stroke-width="1.8"/>
-        <line x1="34" y1="16" x2="34" y2="42" stroke="#333" stroke-width="1" opacity="0.4"/>
-        <line x1="17" y1="22" x2="31" y2="22" stroke="#333" stroke-width="1" opacity="0.4"/>
-        <line x1="17" y1="26" x2="30" y2="26" stroke="#333" stroke-width="1" opacity="0.3"/>
-        <line x1="17" y1="30" x2="29" y2="30" stroke="#333" stroke-width="1" opacity="0.3"/>
-        <line x1="37" y1="22" x2="51" y2="22" stroke="#333" stroke-width="1" opacity="0.4"/>
-        <line x1="37" y1="26" x2="50" y2="26" stroke="#333" stroke-width="1" opacity="0.3"/>
+        <circle cx="34" cy="12" r="8" fill="none" stroke="#333" stroke-width="2.5"/>
+        <circle cx="31" cy="10.5" r="1.3" fill="#333"/>
+        <circle cx="37" cy="10.5" r="1.3" fill="#333"/>
+        <path d="M31 16 Q34 18.5 37 16" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- torso sitting -->
+        <line x1="34" y1="20" x2="34" y2="38" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- seated legs -->
+        <line x1="34" y1="38" x2="28" y2="55" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="28" y1="55" x2="24" y2="67" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="34" y1="38" x2="42" y2="55" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="42" y1="55" x2="46" y2="66" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- arms -->
+        <line x1="34" y1="28" x2="48" y2="24" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+        <line x1="34" y1="28" x2="44" y2="20" stroke="#333" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- rod -->
+        <path d="M44 20 Q64 10 82 18" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round"/>
+        <path d="M82 18 Q88 30 82 52" fill="none" stroke="#333" stroke-width="1.4" stroke-linecap="round"/>
+        <!-- jumping fish -->
+        <path d="M70 54 Q76 48 84 54 Q76 60 70 54 Z" fill="none" stroke="#333" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M70 54 L64 50 L64 58 Z" fill="none" stroke="#333" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="79" cy="53" r="1.1" fill="#333"/>
+        <path d="M68 46 Q70 42 72 46" fill="none" stroke="#333" stroke-width="1.2" stroke-linecap="round" opacity="0.45"/>
+        <path d="M78 44 Q80 40 82 44" fill="none" stroke="#333" stroke-width="1.2" stroke-linecap="round" opacity="0.45"/>
       </svg>
     </section>
     {% endif %}
@@ -121,34 +132,31 @@ layout: default
       <h2 class="about-section-title">Selected Publications</h2>
       <p class="post-description">* indicates equal contribution.</p>
       {% include selected_papers.liquid %}
-      <!-- Graduation stickman celebrating at bottom-right (position:absolute, no layout impact) -->
-      <svg class="section-doodle doodle-grad-man" aria-hidden="true" viewBox="0 0 78 92" xmlns="http://www.w3.org/2000/svg">
-        <!-- graduation cap board -->
-        <line x1="10" y1="9" x2="52" y2="9" stroke="#333" stroke-width="3" stroke-linecap="round"/>
-        <!-- cap body -->
-        <rect x="24" y="2" rx="1" ry="1" width="14" height="8" fill="#333"/>
-        <!-- tassel -->
-        <line x1="51" y1="9" x2="56" y2="21" stroke="#333" stroke-width="1.6" stroke-linecap="round"/>
-        <circle cx="56" cy="23" r="2.8" fill="#333"/>
+      <!-- Proud angler showing off a catch at bottom-right -->
+      <svg class="section-doodle doodle-grad-man" aria-hidden="true" viewBox="0 0 98 92" xmlns="http://www.w3.org/2000/svg">
+        <!-- bucket -->
+        <path d="M10 60 L24 60 L22 79 L12 79 Z" fill="none" stroke="#333" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M12 60 Q17 54 22 60" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
         <!-- head -->
-        <circle cx="31" cy="20" r="9" fill="none" stroke="#333" stroke-width="2.6"/>
-        <!-- happy eyes -->
-        <path d="M27 18 Q29 20 31 18" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M31 18 Q33 20 35 18" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
-        <!-- big smile -->
-        <path d="M26 23 Q31 28 36 23" fill="none" stroke="#333" stroke-width="1.8" stroke-linecap="round"/>
+        <circle cx="38" cy="16" r="8.5" fill="none" stroke="#333" stroke-width="2.6"/>
+        <circle cx="35" cy="14.5" r="1.4" fill="#333"/>
+        <circle cx="41" cy="14.5" r="1.4" fill="#333"/>
+        <path d="M35 20 Q38 22.5 41 20" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round"/>
         <!-- body -->
-        <line x1="31" y1="29" x2="31" y2="60" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
-        <!-- legs apart (triumphant) -->
-        <line x1="31" y1="60" x2="18" y2="82" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
-        <line x1="31" y1="60" x2="44" y2="82" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
-        <!-- both arms raised in V -->
-        <line x1="31" y1="42" x2="8"  y2="26" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
-        <line x1="31" y1="42" x2="56" y2="24" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
-        <!-- diploma scroll in right hand -->
-        <rect x="54" y="16" rx="3" ry="3" width="16" height="11" fill="white" stroke="#333" stroke-width="1.8"/>
-        <line x1="57" y1="21" x2="67" y2="21" stroke="#333" stroke-width="1" opacity="0.6"/>
-        <line x1="57" y1="24" x2="65" y2="24" stroke="#333" stroke-width="1" opacity="0.5"/>
+        <line x1="38" y1="24.5" x2="38" y2="56" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
+        <!-- legs -->
+        <line x1="38" y1="56" x2="28" y2="79" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
+        <line x1="38" y1="56" x2="49" y2="79" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
+        <!-- left arm to bucket -->
+        <line x1="38" y1="36" x2="22" y2="52" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
+        <!-- right arm raising fish -->
+        <line x1="38" y1="36" x2="58" y2="20" stroke="#333" stroke-width="2.6" stroke-linecap="round"/>
+        <!-- caught fish -->
+        <path d="M62 18 Q72 11 82 18 Q72 25 62 18 Z" fill="none" stroke="#333" stroke-width="1.8" stroke-linejoin="round"/>
+        <path d="M62 18 L54 12 L54 24 Z" fill="none" stroke="#333" stroke-width="1.8" stroke-linejoin="round"/>
+        <circle cx="75" cy="17" r="1.2" fill="#333"/>
+        <!-- sea waves under scene -->
+        <path d="M8 85 C18 79, 28 89, 38 85 C48 79, 58 89, 68 85 C78 79, 88 89, 96 85" fill="none" stroke="#333" stroke-width="1.6" stroke-linecap="round" opacity="0.35"/>
       </svg>
     </section>
     {% endif %}

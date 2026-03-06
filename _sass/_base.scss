@@ -181,30 +181,30 @@ blockquote {
   pointer-events: none;
 }
 
-// Bio card: waving stickman at BOTTOM-LEFT, one stickman-height above bottom edge
+// Bio card: sea-fishing stickman at bottom-left
 .doodle-bio-man {
-  width: 62px;
+  width: 74px;
   bottom: 4.5rem;  // one stickman height up from card base
-  left: 16px;
+  left: 10px;
   opacity: 0.6;
   animation: doodle-bob 3.2s ease-in-out infinite;
 }
 
-// News card: sitting-reading stickman at BOTTOM-RIGHT, one stickman-height up
+// News card: small pier fishing scene at bottom-right
 .doodle-news-man {
-  width: 62px;
+  width: 72px;
   bottom: 4.5rem;
-  right: 14px;
+  right: 10px;
   opacity: 0.55;
   animation: doodle-bob 4s ease-in-out infinite;
   animation-delay: 1s;
 }
 
-// Publications card: graduation stickman at BOTTOM-RIGHT, one stickman-height up
+// Publications card: proud angler showing catch
 .doodle-grad-man {
-  width: 62px;
+  width: 68px;
   bottom: 4.5rem;
-  right: 14px;
+  right: 10px;
   opacity: 0.6;
   animation: doodle-bob 3.5s ease-in-out infinite;
   animation-delay: 0.5s;
@@ -218,7 +218,7 @@ blockquote {
 @media (max-width: 575.98px) {
   .doodle-bio-man,
   .doodle-news-man,
-  .doodle-grad-man { width: 46px; }
+  .doodle-grad-man { width: 52px; }
 }
 
 .about-section {
