@@ -179,34 +179,50 @@ blockquote {
 .section-doodle {
   position: absolute;
   pointer-events: none;
+  color: #2c313a;
+  opacity: 0.9;
+}
+
+.section-doodle .accent {
+  stroke: var(--global-theme-color);
+  opacity: 0.7;
+}
+
+.section-doodle .accent-fill {
+  fill: var(--global-theme-color);
+  opacity: 0.55;
+}
+
+.section-doodle .accent-ring {
+  fill: none;
+  stroke: var(--global-theme-color);
+  opacity: 0.28;
+  stroke-width: 1.3;
 }
 
 // Bio card: sea-fishing stickman at bottom-left
 .doodle-bio-man {
-  width: 74px;
+  width: 88px;
   bottom: 4.5rem;  // one stickman height up from card base
-  left: 10px;
-  opacity: 0.6;
-  animation: doodle-bob 3.2s ease-in-out infinite;
+  left: 8px;
+  animation: doodle-bob 5.2s ease-in-out infinite;
 }
 
 // News card: small pier fishing scene at bottom-right
 .doodle-news-man {
-  width: 72px;
+  width: 86px;
   bottom: 4.5rem;
-  right: 10px;
-  opacity: 0.55;
-  animation: doodle-bob 4s ease-in-out infinite;
+  right: 8px;
+  animation: doodle-bob 5.8s ease-in-out infinite;
   animation-delay: 1s;
 }
 
 // Publications card: proud angler showing catch
 .doodle-grad-man {
-  width: 68px;
+  width: 86px;
   bottom: 4.5rem;
-  right: 10px;
-  opacity: 0.6;
-  animation: doodle-bob 3.5s ease-in-out infinite;
+  right: 8px;
+  animation: doodle-bob 5.5s ease-in-out infinite;
   animation-delay: 0.5s;
 }
 
@@ -218,7 +234,7 @@ blockquote {
 @media (max-width: 575.98px) {
   .doodle-bio-man,
   .doodle-news-man,
-  .doodle-grad-man { width: 52px; }
+  .doodle-grad-man { width: 60px; }
 }
 
 .about-section {
